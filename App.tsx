@@ -1,5 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {
@@ -17,8 +18,20 @@ import Homepage from './src/containers/Homepage';
 import ProductPage from './src/containers/Products';
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 const App = () => {
+  const ProductStack = () => {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen name="Vegetables" component={ProductPage} options={{headerShown: false}} />
+        <Stack.Screen name="Fruits" component={ProductPage} options={{headerShown: false}} />
+        <Stack.Screen name="Spices" component={ProductPage} options={{headerShown: false}} />
+        <Stack.Screen name="DifferentType" component={ProductPage} options={{headerShown: false}} />
+      </Stack.Navigator>
+    );
+  };
+
   return (
     <SafeAreaView style={{backgroundColor: '#F2F2F2', flex: 1, width: '100%'}}>
       <NavigationContainer>
@@ -51,7 +64,7 @@ const App = () => {
           />
           <Tab.Screen
             name="BottomProducts"
-            component={ProductPage}
+            component={ProductStack}
             options={{
               tabBarIcon: ({focused}) => (
                 <>

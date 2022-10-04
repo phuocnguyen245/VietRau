@@ -1,19 +1,14 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableWithoutFeedback} from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
 interface Props {
-  onChangeMenuType: (menuType: number) => void;
+  menuType: number;
+  navigation: any;
 }
-const ProductNavigation = ({onChangeMenuType}: Props) => {
-  const [menuType, setMenuType] = useState<number>(1);
-
-  const onPressMenu = (type: number) => {
-    setMenuType(type);
-    onChangeMenuType(type);
-  };
-
+const ProductNavigation = ({navigation, menuType}: Props) => {
   return (
     <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
-      <TouchableWithoutFeedback onPress={() => onPressMenu(1)}>
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate('BottomProducts', {screen: 'Vegetables', params: {type: 1}})}>
         <View>
           <View>
             <Text style={{fontSize: 16, fontWeight: `${menuType === 1 ? '600' : '400'}`}}>Rau ăn lá</Text>
@@ -26,7 +21,8 @@ const ProductNavigation = ({onChangeMenuType}: Props) => {
           />
         </View>
       </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPress={() => onPressMenu(2)}>
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate('BottomProducts', {screen: 'Fruits', params: {type: 2}})}>
         <View>
           <View>
             <Text style={{fontSize: 16, fontWeight: `${menuType === 2 ? '600' : '400'}`}}>Rau ăn quả</Text>
@@ -39,7 +35,8 @@ const ProductNavigation = ({onChangeMenuType}: Props) => {
           />
         </View>
       </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPress={() => onPressMenu(3)}>
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate('BottomProducts', {screen: 'Spices', params: {type: 3}})}>
         <View>
           <View>
             <Text style={{fontSize: 16, fontWeight: `${menuType === 3 ? '600' : '400'}`}}>Rau gia vị</Text>
@@ -52,7 +49,8 @@ const ProductNavigation = ({onChangeMenuType}: Props) => {
           />
         </View>
       </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPress={() => onPressMenu(4)}>
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate('BottomProducts', {screen: 'DifferentType', params: {type: 4}})}>
         <View>
           <View>
             <Text style={{fontSize: 16, fontWeight: `${menuType === 4 ? '600' : '400'}`}}>Loại khác</Text>

@@ -12,7 +12,7 @@ const HomepageNavigation = ({navigation}: any) => {
   return (
     <View style={styles.containerNavigation}>
       <TouchableOpacity
-        onPress={() => navigation.navigate('BottomProducts', {type: 1})}
+        onPress={() => navigation.navigate('BottomProducts', {screen: 'Vegetables', params: {type: 1}})}
         style={{
           backgroundColor: '#00A74C',
           justifyContent: 'center',
@@ -26,7 +26,7 @@ const HomepageNavigation = ({navigation}: any) => {
         <Text style={{fontSize: 14, marginTop: 6, color: '#fff'}}>Rau ăn lá</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate('BottomProducts', {type: 2})}
+        onPress={() => navigation.navigate('BottomProducts', {screen: 'Fruits', params: {type: 2}})}
         style={{
           backgroundColor: '#92C856',
           justifyContent: 'center',
@@ -40,7 +40,7 @@ const HomepageNavigation = ({navigation}: any) => {
         <Text style={{fontSize: 14, marginTop: 6, color: '#fff'}}>Rau ăn quả</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate('BottomProducts', {type: 3})}
+        onPress={() => navigation.navigate('BottomProducts', {screen: 'Spices', params: {type: 3}})}
         style={{
           backgroundColor: '#D3C327',
           justifyContent: 'center',
@@ -54,7 +54,7 @@ const HomepageNavigation = ({navigation}: any) => {
         <Text style={{fontSize: 14, marginTop: 6, color: '#fff'}}>Rau gia vị</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate('BottomProducts', {type: 4})}
+        onPress={() => navigation.navigate('BottomProducts', {screen: 'DifferentType', params: {type: 4}})}
         style={{
           backgroundColor: '#989b96',
           justifyContent: 'center',
