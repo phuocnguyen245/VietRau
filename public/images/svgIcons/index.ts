@@ -14,6 +14,7 @@ import Notification from './icons/Notification.svg';
 import NotificationActive from './icons/NotificationActive.svg';
 import Code from './icons/Code.svg';
 import Filter from './icons/Filter.svg';
+import AddToCart from './icons/AddToCart.svg';
 export {
   SearchIcon,
   ShoppingCart,
@@ -31,4 +32,5 @@ export {
   NotificationActive,
   Code,
   Filter,
+  AddToCart,
 };

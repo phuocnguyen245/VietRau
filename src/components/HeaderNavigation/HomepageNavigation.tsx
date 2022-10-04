@@ -1,7 +1,6 @@
 /*eslint-disable */
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {
   DifferentType as DifferentTypeIcon,
   Fruits as FruitsIcon,
@@ -9,11 +8,11 @@ import {
   Vegetables as VegetablesIcon,
 } from '../../../public/images/svgIcons';
 
-const Tab = createBottomTabNavigator();
-const HeaderNavigation = () => {
+const HomepageNavigation = ({navigation}: any) => {
   return (
     <View style={styles.containerNavigation}>
-      <View
+      <TouchableOpacity
+        onPress={() => navigation.navigate('BottomProducts', {type: 1})}
         style={{
           backgroundColor: '#00A74C',
           justifyContent: 'center',
@@ -25,8 +24,9 @@ const HeaderNavigation = () => {
         }}>
         <VegetablesIcon width={30} height={30} />
         <Text style={{fontSize: 14, marginTop: 6, color: '#fff'}}>Rau ăn lá</Text>
-      </View>
-      <View
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('BottomProducts', {type: 2})}
         style={{
           backgroundColor: '#92C856',
           justifyContent: 'center',
@@ -38,8 +38,9 @@ const HeaderNavigation = () => {
         }}>
         <FruitsIcon width={30} height={30} />
         <Text style={{fontSize: 14, marginTop: 6, color: '#fff'}}>Rau ăn quả</Text>
-      </View>
-      <View
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('BottomProducts', {type: 3})}
         style={{
           backgroundColor: '#D3C327',
           justifyContent: 'center',
@@ -51,8 +52,9 @@ const HeaderNavigation = () => {
         }}>
         <SpicesIcon width={30} height={30} />
         <Text style={{fontSize: 14, marginTop: 6, color: '#fff'}}>Rau gia vị</Text>
-      </View>
-      <View
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('BottomProducts', {type: 4})}
         style={{
           backgroundColor: '#989b96',
           justifyContent: 'center',
@@ -64,12 +66,12 @@ const HeaderNavigation = () => {
         }}>
         <DifferentTypeIcon width={30} height={30} />
         <Text style={{fontSize: 14, marginTop: 6, color: '#fff'}}>Loại khác</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
 
-export default HeaderNavigation;
+export default HomepageNavigation;
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'flex-start',

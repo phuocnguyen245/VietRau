@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
+import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {
   Code,
   Home,
@@ -17,18 +17,19 @@ import Homepage from './src/containers/Homepage';
 import ProductPage from './src/containers/Products';
 
 const Tab = createBottomTabNavigator();
+
 const App = () => {
   return (
     <SafeAreaView style={{backgroundColor: '#F2F2F2', flex: 1, width: '100%'}}>
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName="Home"
+          initialRouteName="BottomHome"
           screenOptions={{
             headerShown: false,
             tabBarShowLabel: false,
           }}>
           <Tab.Screen
-            name="Home"
+            name="BottomHome"
             component={Homepage}
             options={{
               tabBarIcon: ({focused}) => (
@@ -49,7 +50,7 @@ const App = () => {
             }}
           />
           <Tab.Screen
-            name="Products"
+            name="BottomProducts"
             component={ProductPage}
             options={{
               tabBarIcon: ({focused}) => (
@@ -73,7 +74,7 @@ const App = () => {
             name="Button"
             component={ProductPage}
             options={{
-              tabBarIcon: ({focused}) => (
+              tabBarIcon: () => (
                 <TouchableOpacity
                   style={{top: -12, width: 57, height: 57, borderRadius: 57, backgroundColor: '#F68B1F'}}>
                   <View style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -86,7 +87,7 @@ const App = () => {
             }}
           />
           <Tab.Screen
-            name="Notifications"
+            name="BottomNotifications"
             component={ProductPage}
             options={{
               tabBarIcon: ({focused}) => (
@@ -107,7 +108,7 @@ const App = () => {
             }}
           />
           <Tab.Screen
-            name="User"
+            name="BottomUser"
             component={ProductPage}
             options={{
               tabBarIcon: ({focused}) => (
