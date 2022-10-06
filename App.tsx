@@ -1,7 +1,8 @@
+/*eslint-disable */
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React from 'react';
+import React, {useState} from 'react';
 import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {
   Code,
@@ -14,9 +15,11 @@ import {
   User,
   UserActive,
 } from './public/images/svgIcons';
+import Account from './src/containers/Account';
+import EditProfile from './src/containers/Account/containers/EditProfile';
 import Homepage from './src/containers/Homepage';
+import NotificationContainer from './src/containers/Notification';
 import ProductPage from './src/containers/Products';
-
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +31,20 @@ const App = () => {
         <Stack.Screen name="Fruits" component={ProductPage} options={{headerShown: false}} />
         <Stack.Screen name="Spices" component={ProductPage} options={{headerShown: false}} />
         <Stack.Screen name="DifferentType" component={ProductPage} options={{headerShown: false}} />
+      </Stack.Navigator>
+    );
+  };
+
+  const AccountStack = () => {
+    return (
+      <Stack.Navigator initialRouteName="Account">
+        <Stack.Screen name="Account" component={Account} options={{headerShown: false}} />
+        <Stack.Group>
+          <Stack.Screen name="EditProfile" component={EditProfile} options={{title: 'Chỉnh sửa thông tin cá nhân'}} />
+          <Stack.Screen name="Address" component={ProductPage} />
+          <Stack.Screen name="OrderHistory" component={ProductPage} />
+          <Stack.Screen name="ChangePassword" component={ProductPage} />
+        </Stack.Group>
       </Stack.Navigator>
     );
   };
@@ -47,17 +64,10 @@ const App = () => {
             options={{
               tabBarIcon: ({focused}) => (
                 <>
-                  {focused ? (
-                    <View style={{alignItems: 'center'}}>
-                      <HomeActive />
-                      <Text style={{color: '#00A74C'}}>Trang chủ</Text>
-                    </View>
-                  ) : (
-                    <View style={{alignItems: 'center'}}>
-                      <Home />
-                      <Text style={{color: '#BDBDBD'}}>Trang chủ</Text>
-                    </View>
-                  )}
+                  <View style={{alignItems: 'center'}}>
+                    {focused ? <HomeActive /> : <Home />}
+                    <Text style={{color: `${focused ? '#00A74C' : '#BDBDBD'}`}}>Trang chủ</Text>
+                  </View>
                 </>
               ),
             }}
@@ -68,17 +78,10 @@ const App = () => {
             options={{
               tabBarIcon: ({focused}) => (
                 <>
-                  {focused ? (
-                    <View style={{alignItems: 'center'}}>
-                      <ProductActive />
-                      <Text style={{color: '#00A74C'}}>Sản phẩm</Text>
-                    </View>
-                  ) : (
-                    <View style={{alignItems: 'center'}}>
-                      <Product />
-                      <Text style={{color: '#BDBDBD'}}>Sản phẩm</Text>
-                    </View>
-                  )}
+                  <View style={{alignItems: 'center'}}>
+                    {focused ? <ProductActive /> : <Product />}
+                    <Text style={{color: `${focused ? '#00A74C' : '#BDBDBD'}`}}>Sản phẩm</Text>
+                  </View>
                 </>
               ),
             }}
@@ -101,44 +104,43 @@ const App = () => {
           />
           <Tab.Screen
             name="BottomNotifications"
-            component={ProductPage}
+            component={NotificationContainer}
             options={{
               tabBarIcon: ({focused}) => (
                 <>
-                  {focused ? (
-                    <View style={{alignItems: 'center'}}>
-                      <NotificationActive />
-                      <Text style={{color: '#00A74C'}}>Thông báo</Text>
-                    </View>
-                  ) : (
-                    <View style={{alignItems: 'center'}}>
-                      <Notification />
-                      <Text style={{color: '#BDBDBD'}}>Thông báo</Text>
-                    </View>
-                  )}
+                  <View style={{alignItems: 'center'}}>
+                    {focused ? <NotificationActive /> : <Notification />}
+                    <Text style={{color: `${focused ? '#00A74C' : '#BDBDBD'}`}}>Thông báo</Text>
+                  </View>
                 </>
               ),
+              headerShown: false,
+              headerTitle: 'Thông báo',
             }}
           />
           <Tab.Screen
-            name="BottomUser"
-            component={ProductPage}
+            name="BottomAccount"
+            component={AccountStack}
+            listeners={({navigation, route}) => ({
+              tabPress: e => {
+                e.preventDefault();
+                navigation.navigate('BottomAccount', {screen: 'Account'});
+              },
+            })}
             options={{
               tabBarIcon: ({focused}) => (
                 <>
-                  {focused ? (
-                    <View style={{alignItems: 'center'}}>
-                      <UserActive />
-                      <Text style={{color: '#00A74C'}}>Tài khoản</Text>
-                    </View>
-                  ) : (
-                    <View style={{alignItems: 'center'}}>
-                      <User />
-                      <Text style={{color: '#BDBDBD'}}>Tài khoản</Text>
-                    </View>
-                  )}
+                  <View style={{alignItems: 'center'}}>
+                    {focused ? <UserActive /> : <User />}
+                    <Text style={{color: `${focused ? '#00A74C' : '#BDBDBD'}`}}>Tài khoản</Text>
+                  </View>
                 </>
               ),
+              headerStyle: {
+                height: 120,
+                backgroundColor: '#45BA7A',
+              },
+              headerShown: false,
             }}
           />
         </Tab.Navigator>

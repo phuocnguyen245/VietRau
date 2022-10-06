@@ -4,7 +4,7 @@ interface Props {
   menuType: number;
   navigation: any;
 }
-const ProductNavigation = ({navigation, menuType}: Props) => {
+const ProductNavigation = ({navigation, menuType = 1}: Props) => {
   return (
     <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
       <TouchableWithoutFeedback

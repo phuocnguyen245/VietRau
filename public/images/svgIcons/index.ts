@@ -15,6 +15,14 @@ import NotificationActive from './icons/NotificationActive.svg';
 import Code from './icons/Code.svg';
 import Filter from './icons/Filter.svg';
 import AddToCart from './icons/AddToCart.svg';
+import Clock from './icons/Clock.svg';
+import DeliverySuccess from './icons/DeliverySuccess.svg';
+import Discount from './icons/Discount.svg';
+import Update from './icons/Update.svg';
+import Birthday from './icons/Birthday.svg';
+import ArrowRight from './icons/ArrowRight.svg';
+import ArrowRightActive from './icons/ArrowRightActive.svg';
+import Camera from './icons/Camera.svg';
 export {
   SearchIcon,
   ShoppingCart,
@@ -33,4 +41,12 @@ export {
   Code,
   Filter,
   AddToCart,
+  Clock,
+  DeliverySuccess,
+  Discount,
+  Update,
+  Birthday,
+  ArrowRight,
+  ArrowRightActive,
+  Camera,
 };

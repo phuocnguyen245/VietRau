@@ -1,15 +1,17 @@
 import React from 'react';
 import {View, Image, Text, TouchableWithoutFeedback} from 'react-native';
 import {AddToCart} from '../../../public/images/svgIcons';
+import {Dimensions} from 'react-native';
 interface Props {
   type: string;
   isShowAddToCart: boolean;
 }
+const windowWidth = Dimensions.get('window').width;
 const Product = ({type, isShowAddToCart = false}: Props) => {
   return (
     <View
       style={{
-        width: type === 'homepage' ? 140 : '45%',
+        width: type === 'homepage' ? 140 : windowWidth / 2 - 12,
         height: type === 'homepage' ? 180 : 220,
         borderRadius: 8,
         overflow: 'hidden',

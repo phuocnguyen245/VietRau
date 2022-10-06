@@ -9,7 +9,7 @@ const ProductList = () => {
         flexDirection: 'row',
         flex: 1,
         flexWrap: 'wrap',
-        paddingHorizontal: 6,
+        // paddingHorizontal: 6,
       }}>
       {[...Array(5)].map((p: any, index: number) => (
         <Product key={index} type="product" isShowAddToCart={true} />

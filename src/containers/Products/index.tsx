@@ -15,7 +15,7 @@ const ProductPage = (props: any) => {
     <ScrollView showsVerticalScrollIndicator={false}>
       <HeaderSearch type="filter" />
       <ProductNavigation navigation={props.navigation} menuType={menuType} />
-      <View style={{marginTop: 12}}>
+      <View style={{marginTop: 12, justifyContent: 'center', alignItems: 'center', alignContent: 'center'}}>
         <ProductList />
       </View>
     </ScrollView>
